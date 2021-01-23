@@ -1,5 +1,9 @@
 import qrcode
+import os
 
+if not os.path.exists('./qrcodes'): os.mkdir('./qrcodes')
+
+qr_data = input('Enter the qr data: ')
 
 qr = qrcode.QRCode(
     version=1,
@@ -8,7 +12,7 @@ qr = qrcode.QRCode(
     border=2
 )
 
-qr.add_data('https://github.com/neoScriptscode/')
+qr.add_data(qr_data)
 qr.make(fit=True)
 
 img = qr.make_image(fill_color="black", back_color="white")
